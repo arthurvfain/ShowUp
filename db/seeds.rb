@@ -5,3 +5,35 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+User.destroy_all
+User.reset_pk_sequence
+Event.destroy_all
+Event.reset_pk_sequence
+Friendship.destroy_all
+Friendship.reset_pk_sequence
+Invitation.destroy_all
+Invitation.reset_pk_sequence
+EventUser.destroy_all
+EventUser.reset_pk_sequence
+FriendRequest.destroy_all
+FriendRequest.reset_pk_sequence
+
+User.create(username: 'Kyle', address: 'kyle@gmail.com', password: '123')
+User.create(username: 'Arthur', address: 'arthur@gmail.com', password: '123')
+User.create(username: 'Greg', address: 'greg@gmail.com', password: '123')
+User.create(username: 'Lumpy', address: 'lumpy@gmail.com', password: '123')
+
+Friendship.create(user_id: 1, friend_id: 2)
+Friendship.create(user_id: 2, friend_id: 1)
+
+Friendship.create(user_id: 1, friend_id: 4)
+Friendship.create(user_id: 4, friend_id: 1)
+
+Friendship.create(user_id: 2, friend_id: 4)
+Friendship.create(user_id: 4, friend_id: 2)
+
+Friendship.create(user_id: 3, friend_id: 4)
+Friendship.create(user_id: 4, friend_id: 3)
+
+puts "Seeding done!"
