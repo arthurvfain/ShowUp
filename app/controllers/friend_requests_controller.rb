@@ -11,6 +11,7 @@ class FriendRequestsController < ApplicationController
 
     def show
         user = User.find_by(id: params[:id]) #should use session id
+        byebug
         if user
             requests = user.friend_requests
             render json: requests, status: :ok
