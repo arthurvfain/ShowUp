@@ -1,8 +1,9 @@
-import {NavLink} from 'react-router-dom'
+import {NavLink, useHistory} from 'react-router-dom'
 
 
 function NavBar({currentUser, setCurrentUser}) {
 
+    let history = useHistory()
     async function handleLogout() {
         let resp = await fetch('/sessions', {
             method: 'DELETE'
@@ -10,6 +11,7 @@ function NavBar({currentUser, setCurrentUser}) {
 
         if(resp.ok) {
             setCurrentUser('')
+            history.push('/')
         }
         //DO WE WANT/NEED SOMETHING TO HANDLE FAILURE?
     }

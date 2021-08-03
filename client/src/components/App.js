@@ -1,14 +1,24 @@
 import logo from '../logo.svg';
 import '../App.css';
-import {Switch, Route, Redirect} from 'react-router-dom'
+import {BrowserRouter, Switch, Route, Redirect} from 'react-router-dom'
 import NavBar from './NavBar'
 import SignUp from './Signup'
 import Login from './Login'
 import UserHome from './UserHome'
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 
 function App() {
+  
   const [currentUser, setCurrentUser] = useState('')
+  
+  useEffect(() => {
+    fetch('/me').then(r=>r.json()).then(user=>{
+      if (user)
+      {
+        setCurrentUser(user)
+      }
+    })
+  }, [])
 
   return (
     <>
@@ -21,7 +31,7 @@ function App() {
         <Login setCurrentUser={setCurrentUser}/>
       </Route>
       <Route exact path='/home'>
-        <UserHome currentUser={currentUser}/>
+        <BrowserRouter><UserHome currentUser={currentUser}/></BrowserRouter>
       </Route>
     </Switch>
     </>

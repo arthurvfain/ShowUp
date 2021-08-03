@@ -1,8 +1,11 @@
 import {useState} from 'react'
+import {useHistory} from 'react-router-dom'
 
 function SignUp ({setCurrentUser}) {
     const [formData, setFormData] = useState({username: '', password: '', address: ''})
     const [errors, setErrors] = useState([])
+
+    let history = useHistory()
 
     function handleChange(e) {
         let prop = e.target.name
@@ -27,7 +30,11 @@ function SignUp ({setCurrentUser}) {
 
         if (resp.ok) {
             setErrors([])
-            resp.json().then(console.log) // TO DO: ADD REDIRECT
+            resp.json().then(user=>{
+                setCurrentUser(user)
+                history.push('/')
+            })
+            // TO DO: ADD REDIRECT
         } else {
             resp.json().then(data => setErrors(data.errors))
         }

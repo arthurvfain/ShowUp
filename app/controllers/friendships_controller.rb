@@ -1,5 +1,19 @@
 class FriendshipsController < ApplicationController
 
+    def show
+        user = User.find_by(id: params[:id])
+        if user
+            friends = user.friends
+            if friends
+                render json: friends, status: :ok
+            else
+                head :no_content
+            end
+        else
+            render json: {error: "User not found"}, status: :not_found
+        end
+    end
+    
     #REMINDER: Throw in a friend request ID to the fetch request
     def create
         friendship_one = Friendship.create(user_id: params[:user_id], friend_id: params[:friend_id])

@@ -1,5 +1,14 @@
 class SessionsController < ApplicationController
     
+    def me
+        if session[:user_id]
+            user = User.find_by(id: session[:user_id])
+            render json: user, status: :ok
+        else
+            head :no_content
+        end
+    end
+    
     def create
         user = User.find_by(username: params[:username])
 

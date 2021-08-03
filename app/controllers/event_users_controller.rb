@@ -5,7 +5,11 @@ class EventUsersController < ApplicationController
         user = User.find_by(id: params[:id])
         if user
             events = user.events
-            render json: events, status: :ok
+            if events
+                render json: events, status: :ok
+            else
+                head :no_content
+            end
         else
             render json: {error: "User not found"}, status: :not_found
         end

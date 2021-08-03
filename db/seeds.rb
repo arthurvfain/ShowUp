@@ -39,4 +39,15 @@ Friendship.create(user_id: 4, friend_id: 3)
 FriendRequest.create(requester_id: 1, requestee_id: 3)
 FriendRequest.create(requester_id: 3, requestee_id: 2)
 
+Event.create(name: "Lumpy's Lump Party", location: "The Lumps Bar and Grille", public: false, time: Time.now.to_datetime)
+Event.create(name: "Gregs's Greg Party", location: "The Gregs Bar and Grille", public: true, time: Time.now.to_datetime)
+
+Invitation.create(inviter_id: 4, invitee_id: 1, event_id: 1)
+Invitation.create(inviter_id: 4, invitee_id: 2, event_id: 1)
+Invitation.create(inviter_id: 4, invitee_id: 3, event_id: 1)
+Invitation.create(inviter_id: 3, invitee_id: 1, event_id: 2)
+Invitation.create(inviter_id: 3, invitee_id: 2, event_id: 2)
+Invitation.create(inviter_id: 3, invitee_id: 4, event_id: 2)
+
+
 puts "Seeding done!"
