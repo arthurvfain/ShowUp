@@ -36,4 +36,7 @@ Friendship.create(user_id: 4, friend_id: 2)
 Friendship.create(user_id: 3, friend_id: 4)
 Friendship.create(user_id: 4, friend_id: 3)
 
+FriendRequest.create(requester_id: 1, requestee_id: 3)
+FriendRequest.create(requester_id: 3, requestee_id: 2)
+
 puts "Seeding done!"

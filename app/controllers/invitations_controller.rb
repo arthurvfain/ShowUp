@@ -13,7 +13,11 @@ class InvitationsController < ApplicationController
         user = User.find_by(id: params[:id]) #should use session id
         if user
             invitations = user.invitations
-            render json: invitations, status: :ok
+            if invitations
+                render json: invitations, status: :ok
+            else
+                head :no_content
+            end
         else
             render json: {error: "User not found"}, status: :not_found
         end

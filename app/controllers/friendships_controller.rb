@@ -12,7 +12,6 @@ class FriendshipsController < ApplicationController
         else
             render json: {errors: [{one: friendship_one.errors.full_messages}, {two: friendship_two.errors.full_messages}]}, status: :unprocessable_entity
         end
-    
     end
 
     private
