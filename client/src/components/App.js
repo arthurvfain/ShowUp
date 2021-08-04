@@ -35,7 +35,7 @@ function App() {
         <Login setCurrentUser={setCurrentUser}/>
       </Route>
       <Route exact path='/home'>
-        <BrowserRouter><UserHome currentUser={currentUser}/></BrowserRouter>
+      <BrowserRouter><UserHome currentUser={currentUser}/></BrowserRouter>
       </Route>
       <Route exact path='/user_list'>
         <BrowseUsers currentUser={currentUser}></BrowseUsers>

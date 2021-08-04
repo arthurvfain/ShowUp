@@ -1,4 +1,4 @@
-import {useHistory} from 'react-router-dom'
+import {useHistory, Link} from 'react-router-dom'
 
 function EventCard({event}){
 
@@ -14,7 +14,8 @@ function EventCard({event}){
             <li>{event.name}</li>
             <li>{event.location}</li>
             <li>{event.time}</li>
-            <button onClick={handleClick}>Event Page</button> 
+            {/* <button onClick={handleClick}>Event Page</button>  */}
+            <Link to={`/event_page/${event.id}`}>Event Page</Link>
         </>  
     )
 }

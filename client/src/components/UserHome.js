@@ -1,7 +1,10 @@
 import FriendsList from './FriendsList'
 import UserDashboard from './UserDashboard'
 import CreateEvent from './CreateEvent'
-import {Switch, Route, Link} from 'react-router-dom'
+import BrowsePublicEvents from './BrowsePublicEvents'
+import EventPage from './EventPage'
+import UserPage from './UserPage'
+import {Switch, Route, Link, BrowserRouter} from 'react-router-dom'
 
 function UserHome({currentUser}) {
     return (
@@ -10,7 +13,7 @@ function UserHome({currentUser}) {
         <Link to='/home'>Dashboard</Link>
         <Link to='/home/friends'>Friends List</Link>
         <Link to='/home/create_event'>Create an Event</Link>
-        
+        <Link to='/home/public_events'>Public Events</Link>
         <Switch>
             <Route exact path='/home'>
                 <UserDashboard currentUser={currentUser}/>
@@ -20,7 +23,16 @@ function UserHome({currentUser}) {
             </Route>
             <Route exact path='/home/create_event'>
                 <CreateEvent currentUser={currentUser}/>
-            </Route>    
+            </Route>
+            <Route exact path='/home/public_events'>
+                <BrowsePublicEvents/>
+            </Route>
+            <Route exact path='/event_page/:id'>
+                <EventPage currentUser={currentUser}/>
+            </Route>
+            <Route exact path='/user_page/:id'>
+                <UserPage currentUser={currentUser}/>
+            </Route>
         </Switch>
     </>
     )

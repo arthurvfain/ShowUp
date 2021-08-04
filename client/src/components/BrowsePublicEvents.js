@@ -1,5 +1,6 @@
 import {useEffect, useState} from 'react'
 import Loading from './Loading'
+import EventCard from './EventCard'
 
 function BrowsePublicEvents() {
     const [eventList, setEventList] = useState([])
@@ -18,7 +19,7 @@ function BrowsePublicEvents() {
     return (
         <>
             <h1>Public Events</h1>
-            {loading ? <Loading /> : eventList.map(event => <li key={event.id}>{event.name}</li>)}
+            {loading ? <Loading /> : eventList.map(event => <EventCard key={event.id} event={event}/>)}
         </>
     )
 }

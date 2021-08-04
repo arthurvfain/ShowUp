@@ -9,24 +9,25 @@ function UserPage({currentUser}){
     
     const [user, setUser] = useState({})
     const [loading, setLoading] = useState(true)
+    const [friend, setFriend] = useState(false)
     
     useEffect(() => {
         fetch(`/users/${params.id}`).then(r=>r.json()).then((data) => {
             setUser(data)
             setLoading(false)
+            console.log(data.friends)
+            console.log(currentUser)
+            console.log(data.friends.includes(friend => friend.id === currentUser.id))
         })
     }, [])
     
-    if (!loading) {
-        console.log(user.events.map(event => event))
-    }
     
     function generateUserPage(user){
         let publicEvents = user.events.filter(event => event.public)
-        console.log(publicEvents)
         return (
             <div>
                 <h1>{user.username}'s Page</h1>
+                {friend ? <button>Add Friend</button> : <button>Unfriend</button>}
                 <h1>User Events</h1>
                 <ul>
                     {publicEvents.map(event => <EventCard event={event}/>)}
