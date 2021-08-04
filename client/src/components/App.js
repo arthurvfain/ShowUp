@@ -7,6 +7,8 @@ import Login from './Login'
 import UserHome from './UserHome'
 import BrowseUsers from './BrowseUsers'
 import BrowsePublicEvents from './BrowsePublicEvents'
+import UserPage from './UserPage'
+import EventPage from './EventPage'
 import {useState, useEffect} from 'react'
 
 function App() {
@@ -40,6 +42,12 @@ function App() {
       </Route>
       <Route exact path='/public_events'>
         <BrowsePublicEvents></BrowsePublicEvents>
+      </Route>
+      <Route exact path='/user_page/:id'>
+        <UserPage currentUser={currentUser}/>
+      </Route>
+      <Route exact path='/event_page/:id'>
+        <EventPage currentUser={currentUser}/>
       </Route>
     </Switch>
     </>

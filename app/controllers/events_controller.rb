@@ -19,7 +19,7 @@ class EventsController < ApplicationController
     def show
         event = Event.find_by(id: params[:id])
         if event
-            render json: event, status: :created
+            render json: event, serializer: EventDetailsSerializer, status: :created
         else
             render json: {error: "event not Found"}, status: :not_found
         end

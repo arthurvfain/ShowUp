@@ -1,4 +1,5 @@
 import Loading from './Loading'
+import FriendCard from './FriendCard'
 import {useState, useEffect} from 'react'
 
 function FriendsList({currentUser}) {
@@ -17,7 +18,7 @@ function FriendsList({currentUser}) {
     return (
     <>
     <h1>Friends</h1>
-    {loading ? <Loading /> : friends.length > 0 ? friends.map(friend => <li>{friend.username}</li>) : <li>Go Outside</li>}
+    {loading ? <Loading /> : friends.length > 0 ? friends.map(friend => <FriendCard friend={friend}/>) : <li>Go Outside</li>}
     </>
     )
 }

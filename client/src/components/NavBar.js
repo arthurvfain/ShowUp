@@ -11,7 +11,7 @@ function NavBar({currentUser, setCurrentUser}) {
 
         if(resp.ok) {
             setCurrentUser('')
-            history.push('/')
+            history.push('/login')
         }
         //DO WE WANT/NEED SOMETHING TO HANDLE FAILURE?
     }

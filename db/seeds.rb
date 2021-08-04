@@ -49,5 +49,6 @@ Invitation.create(inviter_id: 3, invitee_id: 1, event_id: 2)
 Invitation.create(inviter_id: 3, invitee_id: 2, event_id: 2)
 Invitation.create(inviter_id: 3, invitee_id: 4, event_id: 2)
 
+EventUser.create(user_id: 4, event_id: 1, visible: true)
 
 puts "Seeding done!"
