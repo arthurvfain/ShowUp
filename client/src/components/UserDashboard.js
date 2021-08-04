@@ -4,6 +4,8 @@ import {useState, useEffect} from 'react'
 
 function UserDashboard({currentUser}){
 
+    console.log(currentUser.id)
+
     const [loading, setLoading] = useState(true)
     const [events, setEvents] = useState([])
 
