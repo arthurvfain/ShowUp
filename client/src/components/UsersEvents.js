@@ -1,18 +1,8 @@
 import Loading from './Loading'
 import {useState, useEffect} from 'react'
 
-function UserEvents({currentUser}) {
+function UserEvents({events, loading}) {
     
-    const [loading, setLoading] = useState(true)
-    const [events, setEvents] = useState([])
-
-    useEffect(() => {
-        fetch(`/event_users/${currentUser.id}`).then(r=>r.json()).then(data=>{
-            setEvents(data)
-            setLoading(false)
-        })
-        
-    }, [])
 
     return (
     <>

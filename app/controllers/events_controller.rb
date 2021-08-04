@@ -1,13 +1,15 @@
 class EventsController < ApplicationController
     
     def index
-        events = Event.all
+        events = Event.where(public: true)
         render json: events, status: :created
     end
 
     def create
         event = Event.create(event_params)
         if event.valid?
+            event_user = EventUser.create(user_id: event_creator[:creator], event_id: event.id, visible: event.public)
+            byebug
             render json: event, status: :created
         else
             render json: {errors: event.errors.full_messages}, status: :unprocessable_entity
@@ -33,5 +35,9 @@ class EventsController < ApplicationController
 
     def event_params
         params.require(:event).permit(:name, :location, :public, :time)
+    end
+
+    def event_creator
+        params.permit(:creator)
     end
 end

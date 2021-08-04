@@ -31,7 +31,7 @@ function Login({setCurrentUser}) {
             setError([])
             resp.json().then(data => {
                 setCurrentUser(data)
-                history.push('/')
+                history.push('/home')
             }) // TO DO: ADD REDIRECT
         } else {
             resp.json().then(data => {

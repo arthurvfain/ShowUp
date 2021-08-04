@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :sessions, only: [:create]
   delete '/sessions', to: 'sessions#destroy'
   get '/me', to: 'sessions#me'
+  post '/accept_invite', to: 'event_users#accept_invite'
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!
   get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }

@@ -5,6 +5,8 @@ import NavBar from './NavBar'
 import SignUp from './Signup'
 import Login from './Login'
 import UserHome from './UserHome'
+import BrowseUsers from './BrowseUsers'
+import BrowsePublicEvents from './BrowsePublicEvents'
 import {useState, useEffect} from 'react'
 
 function App() {
@@ -32,6 +34,12 @@ function App() {
       </Route>
       <Route exact path='/home'>
         <BrowserRouter><UserHome currentUser={currentUser}/></BrowserRouter>
+      </Route>
+      <Route exact path='/user_list'>
+        <BrowseUsers currentUser={currentUser}></BrowseUsers>
+      </Route>
+      <Route exact path='/public_events'>
+        <BrowsePublicEvents></BrowsePublicEvents>
       </Route>
     </Switch>
     </>

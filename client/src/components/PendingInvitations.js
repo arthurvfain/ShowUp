@@ -1,11 +1,11 @@
 import EventInvitations from './EventInvitations'
 import FriendRequests from './FriendRequests'
 
-function PendingInvitations({currentUser}){
+function PendingInvitations({currentUser, setEvents, events}){
     return (
         <>
             <h1>Pending Invitations</h1>
-            <EventInvitations currentUser={currentUser}/>
+            <EventInvitations setEvents={setEvents} events={events} currentUser={currentUser}/>
             <FriendRequests currentUser={currentUser}/>
         </>
     )
