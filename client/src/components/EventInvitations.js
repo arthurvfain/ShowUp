@@ -14,6 +14,7 @@ function EventInvitations({currentUser, setEvents, events}) {
         })
         
     }, [])
+    console.log(invitations)
 
     function acceptInvite(id, inviteeId, eventId) {
         fetch(`/accept_invite`, {
@@ -27,7 +28,7 @@ function EventInvitations({currentUser, setEvents, events}) {
         .then((data) => {
             let newEvents = [...events, data.event]
             setEvents(newEvents)
-            let newInvitations = invitations.filter(inv => inv.id !== id)
+            let newInvitations = invitations.filter(inv => inv.event_id !== eventId)
             setInvitations(newInvitations)
         })
     }

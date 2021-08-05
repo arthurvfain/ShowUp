@@ -17,7 +17,7 @@ class EventUsersController < ApplicationController
     # ------------------------
 
     def create
-        event_user = EventUser.create(event_user_params)
+        event_user = EventUser.create(user_id: event_user_params[:user_id], event_id: event_user_params[:event_id], visible: true)
         if event_user.valid?
             render json: event_user, status: :created
         else
@@ -41,7 +41,7 @@ class EventUsersController < ApplicationController
     end
 
     def destroy
-        event_user = EventUser.find_by(id: params[:id])
+        event_user = EventUser.find_by(user_id: params[:user], event_id: params[:event])
         event_user.destroy
         head :no_content
     end

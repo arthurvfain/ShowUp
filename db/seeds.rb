@@ -23,6 +23,7 @@ User.create(username: 'Kyle', address: 'kyle@gmail.com', password: '123')
 User.create(username: 'Arthur', address: 'arthur@gmail.com', password: '123')
 User.create(username: 'Greg', address: 'greg@gmail.com', password: '123')
 User.create(username: 'Lumpy', address: 'lumpy@gmail.com', password: '123')
+User.create(username: 'Bob', address: 'bob@gmail.com', password: '123')
 
 Friendship.create(user_id: 1, friend_id: 2)
 Friendship.create(user_id: 2, friend_id: 1)
