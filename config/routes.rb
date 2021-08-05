@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   delete '/sessions', to: 'sessions#destroy'
   get '/me', to: 'sessions#me'
   post '/accept_invite', to: 'event_users#accept_invite'
+  delete '/cancel_request/:requester/:requestee', to: 'friend_requests#cancel_request'
+  delete '/unfriend/:user/:friend', to: 'friendships#destroy'
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!
   get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }

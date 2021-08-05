@@ -1,5 +1,6 @@
 import {useEffect, useState} from 'react'
 import Loading from './Loading'
+import FriendCard from './FriendCard'
 
 function BrowseUsers({currentUser}){
 
@@ -18,7 +19,7 @@ function BrowseUsers({currentUser}){
     return (
         <>
             <h1>Users like You</h1>
-            {loading ? <Loading /> : filteredUsers.map(user => <li key={user.id}>{user.username}</li>)}
+            {loading ? <Loading /> : filteredUsers.map(user => <FriendCard key={user.id} friend={user}>{user.username}</FriendCard>)}
         </>
     )
 }

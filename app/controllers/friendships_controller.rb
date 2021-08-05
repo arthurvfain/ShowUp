@@ -28,6 +28,14 @@ class FriendshipsController < ApplicationController
         end
     end
 
+    def destroy
+        friendship_one = Friendship.find_by(user_id: params[:user], friend_id: params[:friend])
+        friendship_two = Friendship.find_by(user_id: params[:friend], friend_id: params[:user])
+
+        friendship_one.destroy
+        friendship_two.destroy
+    end
+
     private
     
     def friendship_params

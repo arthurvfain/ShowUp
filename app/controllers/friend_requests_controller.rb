@@ -23,6 +23,12 @@ class FriendRequestsController < ApplicationController
         end
     end
 
+    def cancel_request
+        request = FriendRequest.find_by(requester_id: params[:requester], requestee_id: params[:requestee])
+        request.destroy
+        head :no_content
+    end
+
     def destroy
         friend_request = FriendRequest.find_by(id: params[:id])
         friend_request.destroy

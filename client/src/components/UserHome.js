@@ -10,10 +10,6 @@ function UserHome({currentUser}) {
     return (
     <>
         <h1>{currentUser.username}'s Home Page</h1>
-        <Link to='/home'>Dashboard</Link>
-        <Link to='/home/friends'>Friends List</Link>
-        <Link to='/home/create_event'>Create an Event</Link>
-        <Link to='/home/public_events'>Public Events</Link>
         <Switch>
             <Route exact path='/home'>
                 <UserDashboard currentUser={currentUser}/>

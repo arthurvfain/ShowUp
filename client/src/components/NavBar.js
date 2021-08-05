@@ -19,7 +19,7 @@ function NavBar({currentUser, setCurrentUser}) {
     return (
         <>
             <h1>ShowUp {currentUser ? `, ${currentUser.username}`: null}</h1>
-            {currentUser ? <> <NavLink to='/home'>Home</NavLink><button onClick={handleLogout}>Log Out</button> </> : <><NavLink to='/signup'>Sign Up</NavLink>
+            {currentUser ? <> <NavLink to='/home'>Home</NavLink><NavLink to='/friends'>Friends List</NavLink><NavLink to='/create_event'>Create an Event</NavLink><button onClick={handleLogout}>Log Out</button> </> : <><NavLink to='/signup'>Sign Up</NavLink>
             <NavLink to='/login'>Log In</NavLink></>}
             <NavLink to='/user_list'>Users</NavLink>
             <NavLink to='/public_events'>Public Events</NavLink>

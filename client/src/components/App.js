@@ -9,6 +9,9 @@ import BrowseUsers from './BrowseUsers'
 import BrowsePublicEvents from './BrowsePublicEvents'
 import UserPage from './UserPage'
 import EventPage from './EventPage'
+import FriendsList from './FriendsList'
+import UserDashboard from './UserDashboard'
+import CreateEvent from './CreateEvent'
 import {useState, useEffect} from 'react'
 
 function App() {
@@ -35,7 +38,7 @@ function App() {
         <Login setCurrentUser={setCurrentUser}/>
       </Route>
       <Route exact path='/home'>
-      <BrowserRouter><UserHome currentUser={currentUser}/></BrowserRouter>
+        <UserDashboard currentUser={currentUser}/>
       </Route>
       <Route exact path='/user_list'>
         <BrowseUsers currentUser={currentUser}></BrowseUsers>
@@ -43,11 +46,18 @@ function App() {
       <Route exact path='/public_events'>
         <BrowsePublicEvents></BrowsePublicEvents>
       </Route>
+      <Redirect from={`/x_user_page/:id`} to={`/user_page/:id`} />
       <Route exact path='/user_page/:id'>
         <UserPage currentUser={currentUser}/>
       </Route>
       <Route exact path='/event_page/:id'>
         <EventPage currentUser={currentUser}/>
+      </Route>
+      <Route exact path='/friends'>
+        <FriendsList currentUser={currentUser}/>
+      </Route>
+      <Route exact path='/create_event'>
+        <CreateEvent currentUser={currentUser}/>
       </Route>
     </Switch>
     </>
