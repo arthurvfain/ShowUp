@@ -1,4 +1,6 @@
 import {NavLink, useHistory} from 'react-router-dom'
+import {Navbar, Nav, Container} from 'react-bootstrap';
+import {LinkContainer} from 'react-router-bootstrap'
 
 
 function NavBar({currentUser, setCurrentUser}) {
@@ -17,13 +19,28 @@ function NavBar({currentUser, setCurrentUser}) {
     }
 
     return (
-        <>
-            <h1>ShowUp {currentUser ? `, ${currentUser.username}`: null}</h1>
-            {currentUser ? <> <NavLink to='/home'>Home</NavLink><NavLink to='/friends'>Friends List</NavLink><NavLink to='/create_event'>Create an Event</NavLink><button onClick={handleLogout}>Log Out</button> </> : <><NavLink to='/signup'>Sign Up</NavLink>
-            <NavLink to='/login'>Log In</NavLink></>}
-            <NavLink to='/user_list'>Users</NavLink>
-            <NavLink to='/public_events'>Public Events</NavLink>
-        </>
+
+        <Navbar bg="primary" variant="dark">
+        <Container>
+            <Navbar.Brand>ShowUp{currentUser ? `, ${currentUser.username}`: null}</Navbar.Brand>     
+        {currentUser ?  
+            <Nav className="me-auto">
+                <LinkContainer to='/home'><Nav.Link>Home</Nav.Link></LinkContainer>
+                <LinkContainer to='/friends'><Nav.Link>Friends List</Nav.Link></LinkContainer>
+                <LinkContainer to='/create_event'><Nav.Link >Create an Event</Nav.Link></LinkContainer>
+                <Nav.Link onClick={handleLogout}>Log Out</Nav.Link>
+            </Nav> 
+            :
+            <Nav className="me-auto">
+                <LinkContainer to='/signup'><Nav.Link >Sign Up</Nav.Link></LinkContainer>
+                <LinkContainer to='/login'><Nav.Link >Log In</Nav.Link></LinkContainer>
+            </Nav>}
+            <Nav>
+                <LinkContainer to='/user_list'><Nav.Link>Users</Nav.Link></LinkContainer>
+                <LinkContainer to='/public_events'><Nav.Link>Public Events</Nav.Link></LinkContainer>
+            </Nav>
+        </Container>
+        </Navbar>
     )
 }
 export default NavBar

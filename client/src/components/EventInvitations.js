@@ -14,7 +14,6 @@ function EventInvitations({currentUser, setEvents, events}) {
         })
         
     }, [])
-    console.log(invitations)
 
     function acceptInvite(id, inviteeId, eventId) {
         fetch(`/accept_invite`, {

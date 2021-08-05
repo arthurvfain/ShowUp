@@ -1,22 +1,25 @@
-import {useHistory, Link} from 'react-router-dom'
+// import {useHistory, Link} from 'react-router-dom'
+import { Card, Button } from 'react-bootstrap'
+import {LinkContainer} from 'react-router-bootstrap'
 
 function EventCard({event}){
 
-    let history = useHistory()
+    // let history = useHistory()
 
-    function handleClick()
-    {
-        history.push(`/event_page/${event.id}`)
-    }
+    // function handleClick()
+    // {
+    //     history.push(`/event_page/${event.id}`)
+    // }
 
     return (
-        <>
-            <li>{event.name}</li>
-            <li>{event.location}</li>
-            <li>{event.time}</li>
-            {/* <button onClick={handleClick}>Event Page</button>  */}
-            <Link to={`/event_page/${event.id}`}>Event Page</Link>
-        </>  
+        <Card className = 'text-center' style={{ width: '18rem'  }}>
+            <Card.Header as="h3">{event.name}</Card.Header>
+            <Card.Body>
+                <Card.Title>{event.location}</Card.Title>
+                <Card.Text>{event.time}</Card.Text>
+                <LinkContainer to={`/event_page/${event.id}`}><Button variant="primary">Event Page</Button></LinkContainer>
+            </Card.Body>
+        </Card>
     )
 }
 export default EventCard

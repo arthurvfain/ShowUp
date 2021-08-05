@@ -50,7 +50,6 @@ function UserPage({currentUser}){
         .then(resp => resp.json())
         .then(() => setRequested(true))
     }
-    console.log(friendRequestId)
 
     function cancelRequest() {
         console.log(currentUser)
