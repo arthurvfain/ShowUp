@@ -54,3 +54,15 @@ h3 {
   text-align: center;
   padding-top: 10px;
 }
+
+.custom-select {
+  background-color: rgb(13, 110, 253);
+  color: white;
+  height: 37px;
+  width: 100px;
+  border-radius: 8px;
+  margin: 0px 10px 0px 10px;
+}
+.custom-select option{
+background-color: rgb(13, 110, 253);
+}

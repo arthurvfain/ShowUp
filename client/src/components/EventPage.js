@@ -105,11 +105,11 @@ function EventPage({currentUser}){
                 {currentUser && attending ?
                     <form onSubmit={(e) => inviteGuest(e)}>
                         <label>Invite Friend:</label>
-                        <select name='friend' defaultValue='default'>
+                        <select className = 'custom-select' name='friend' defaultValue='default'>
                             <option disabled value='default'>---</option>
                             {invitables.map(inv => <option value={inv.id}>{inv.username}</option>)}
                         </select>
-                        <input type='submit'/>
+                        <Button variant="outline-primary" as="input" type='submit' value='Invite'/>
                     </form> : null}
                 {error ? <li>{error}</li> : null}
             </div>

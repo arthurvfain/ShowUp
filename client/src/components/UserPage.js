@@ -93,7 +93,7 @@ function UserPage({currentUser}){
                 <h1>{user.username}'s Page</h1>
                 {currentUser ? !friend ? requested ? <Button variant="primary" onClick={() => cancelRequest()}>Cancel Friend Request</Button> : inverseRequested ? <Button variant="primary" onClick={() => acceptRequest()}>Accept Friend Request</Button>: <Button variant="primary" onClick={() => addFriend()}>Add Friend</Button> : <Button variant="primary" onClick={() => unfriend()}>Unfriend</Button>:null}
                 <h3>User Events</h3>
-                <Grid container justifyContent='center' spacing={2}>
+                <Grid container align='center' justifyContent='center' spacing={2}>
                     {publicEvents.map(event => <Grid item xs={6} sm={3} key={event.id}><EventCard event={event}/></Grid>)}
                 </Grid>
                 <h3>User Friends</h3>
