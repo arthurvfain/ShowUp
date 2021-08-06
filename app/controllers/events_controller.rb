@@ -9,7 +9,6 @@ class EventsController < ApplicationController
         event = Event.create(event_params)
         if event.valid?
             event_user = EventUser.create(user_id: event_creator[:creator], event_id: event.id, visible: event.public)
-            byebug
             render json: event, status: :created
         else
             render json: {errors: event.errors.full_messages}, status: :unprocessable_entity

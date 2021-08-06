@@ -2,7 +2,7 @@ import {Card, Button} from 'react-bootstrap'
 function FrRequest({request, rejectRequest, acceptRequest})
 {
     return (
-        <Card className = 'text-center'>
+        <Card className = 'text-center' style={{ maxWidth: '18rem'  }}>
             <Card.Header as="h5">{request.requester.username} wants to be your friend !</Card.Header>
             <Card.Body>
                 <Card.Text>Would you like to: </Card.Text>

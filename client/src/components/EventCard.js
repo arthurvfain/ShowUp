@@ -4,15 +4,8 @@ import {LinkContainer} from 'react-router-bootstrap'
 
 function EventCard({event}){
 
-    // let history = useHistory()
-
-    // function handleClick()
-    // {
-    //     history.push(`/event_page/${event.id}`)
-    // }
-
     return (
-        <Card className = 'text-center' style={{ width: '18rem'  }}>
+        <Card className = 'text-center' style={{ maxWidth: '18rem'  }}>
             <Card.Header as="h3">{event.name}</Card.Header>
             <Card.Body>
                 <Card.Title>{event.location}</Card.Title>

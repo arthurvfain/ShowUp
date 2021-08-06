@@ -10,7 +10,7 @@ function UserEvents({events, loading}) {
     return (
     <>
     <h1>My Events</h1>
-    {loading ? <Loading /> : events.length > 0 ? <Grid container justifyContent='center' spacing={2}>{events.map(event => <Grid item xs={6} sm={3} key={event.id}><EventCard event={event}/></Grid>)}</Grid> : <LinkContainer to='/create_event'><Button>Host Your Own Event !</Button></LinkContainer>}
+    {loading ? <Loading /> : events.length > 0 ? <Grid container align='center' justifyContent='center' spacing={2}>{events.map(event => <Grid item xs={6} sm={3} key={event.id}><EventCard event={event}/></Grid>)}</Grid> : <LinkContainer to='/create_event'><Button>Host Your Own Event !</Button></LinkContainer>}
     </>
     )
 }

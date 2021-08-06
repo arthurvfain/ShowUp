@@ -1,5 +1,6 @@
 import {useState} from 'react'
 import {useHistory} from 'react-router-dom'
+import { Form, Button } from 'react-bootstrap'
 
 function Login({setCurrentUser}) {
     const [formData, setFormData] = useState({username: '', password: ''})
@@ -41,14 +42,27 @@ function Login({setCurrentUser}) {
     }
 
     return (
-        <>
-            <form onSubmit={handleSubmit}>
+        <div className='pageContent'>
+            {/* <form onSubmit={handleSubmit}>
                 <label>Username: <input onChange={handleChange} type='text' name='username' value={formData.username}></input></label>
                 <label>Password: <input onChange={handleChange} type='password' name='password' value={formData.password}></input></label>
                 <input type='submit'></input>
-            </form>
+            </form> */}
+            <Form onSubmit={handleSubmit} style={{maxWidth: '18rem', margin: 'auto'}}>
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Label>Username</Form.Label>
+                    <Form.Control type="text" placeholder="Username" onChange={handleChange} name='username' value={formData.username}/>
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="formBasicPassword">
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control type="password" placeholder="Password" onChange={handleChange} name='password' value={formData.password}/>
+                </Form.Group>
+                <Button variant="primary" type="submit">
+                    Submit
+                </Button>
+            </Form>
             {error ? <li>{error}</li> : null}
-        </>
+        </div>
     )
 }
 

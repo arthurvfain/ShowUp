@@ -1,5 +1,6 @@
 import {useState} from 'react'
 import {useHistory} from 'react-router-dom'
+import { Form, Button } from 'react-bootstrap'
 
 function CreateEvent({currentUser}) {
     const [formData, setFormData] = useState({name: '', location: '', public: false})
@@ -57,8 +58,32 @@ function CreateEvent({currentUser}) {
     }
 
     return(
-        <>
-            <form onSubmit={handleSubmit}>
+        <div >
+            <Form onSubmit={handleSubmit} style={{maxWidth: '18rem', margin: 'auto', paddingTop: '50px'}}>
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Label>Event Name</Form.Label>
+                    <Form.Control type="text" placeholder="Event Name" onChange={handleChange} name='name' value={formData.name}/>
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="formBasicPassword">
+                    <Form.Label>Location</Form.Label>
+                    <Form.Control type="text" placeholder="Location" onChange={handleChange} name='location' value={formData.location}/>
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="formBasicPassword">
+                    <Form.Label>Date</Form.Label>
+                    <Form.Control type="date"  onChange={handleChange} name='date' value={formData.date}/>
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="formBasicPassword">
+                    <Form.Label>Time</Form.Label>
+                    <Form.Control type="time"  onChange={handleChange} name='time' value={formData.time}/>
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="formBasicCheckbox" style={{ marginLeft: '35%'}}>
+                    <Form.Check type="checkbox" label="Public?" onChange={handleChange} name='public' value={formData.public}/>
+                </Form.Group>
+                <Button variant="primary" type="submit" style={{ marginLeft: '35%'}}>
+                    Submit
+                </Button>
+            </Form>
+            {/* <form onSubmit={handleSubmit}>
                 <label>Event Name: <input onChange={handleChange} type='text' name='name' value={formData.name}></input></label>
                 <label>Location: <input onChange={handleChange} type='text' name='location' value={formData.location}></input></label>
 
@@ -66,9 +91,10 @@ function CreateEvent({currentUser}) {
                 <label>Time: <input onChange={handleChange} type='time' name='time' value={formData.time}></input></label>
                 <label>Public?: <input onChange={handleChange} type='checkbox' name='public' value={formData.public}></input></label>
                 <input type='submit'></input>
-            </form>
+            </form> */}
+
             {errors ? errors.map(error => <li>{error}</li>) : null}
-        </>
+        </div>
     )
 }
 

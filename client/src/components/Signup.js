@@ -1,5 +1,6 @@
 import {useState} from 'react'
 import {useHistory} from 'react-router-dom'
+import { Form, Button } from 'react-bootstrap'
 
 function SignUp ({setCurrentUser}) {
     const [formData, setFormData] = useState({username: '', password: '', address: ''})
@@ -41,15 +42,26 @@ function SignUp ({setCurrentUser}) {
     }
 
     return (
-        <>
-            <form onSubmit={handleSubmit}>
-                <label>Username: <input onChange={handleChange} type='text' name='username' value={formData.username}></input></label>
-                <label>Email: <input onChange={handleChange} type='text' name='address' value={formData.address}></input></label>
-                <label>Password: <input onChange={handleChange} type='password' name='password' value={formData.password}></input></label>
-                <input type='submit'></input>
-            </form>
+        <div className='pageContent'>
+            <Form onSubmit={handleSubmit} style={{maxWidth: '18rem', margin: 'auto'}}>
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Label>Username</Form.Label>
+                    <Form.Control type="text" placeholder="Username" onChange={handleChange} name='username' value={formData.username}/>
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="formBasicPassword">
+                    <Form.Label>Email</Form.Label>
+                    <Form.Control type="text" placeholder="Email" onChange={handleChange} name='address' value={formData.address}/>
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="formBasicPassword">
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control type="password" placeholder="Password" onChange={handleChange} name='password' value={formData.password}/>
+                </Form.Group>
+                <Button variant="primary" type="submit">
+                    Submit
+                </Button>
+            </Form>
             {errors ? errors.map(error => <li>{error}</li>) : null}
-        </>
+        </div>
     )
 }
 

@@ -14,13 +14,10 @@ function BrowsePublicEvents() {
         })
     }, [])
 
-    //const filteredEvents = eventList.filter(event => event.public == true)
-    //WARNING: This is insecure, we should instead do a fetch for only public events
-
     return (
         <div className='pageContent'>
             <h1>Public Events</h1>
-            {loading ? <Loading /> : <Grid container justifyContent='center' spacing={2}>{eventList.map(event => <Grid item xs={6} sm={3} key={event.id}><EventCard event={event}/></Grid>)}</Grid>}
+            {loading ? <Loading /> : <Grid container align='center' justifyContent='center' spacing={2}>{eventList.map(event => <Grid item xs={6} sm={3} key={event.id}><EventCard event={event}/></Grid>)}</Grid>}
         </div>
     )
 }
