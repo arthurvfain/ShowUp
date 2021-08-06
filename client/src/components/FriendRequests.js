@@ -1,6 +1,9 @@
 import Loading from './Loading'
 import FrRequest from './FrRequest'
 import {useState, useEffect} from 'react'
+import { Grid }  from '@material-ui/core'
+import { Button } from 'react-bootstrap'
+import { LinkContainer } from 'react-router-bootstrap'
 
 function FriendRequests({currentUser}) {
     
@@ -44,7 +47,8 @@ function FriendRequests({currentUser}) {
     return (
     <>
     <h1>Friend Requests</h1>
-    {loading ? <Loading /> : friendRequests.length > 0 ? friendRequests.map(request => <FrRequest request={request} rejectRequest={rejectRequest} acceptRequest={acceptRequest}/>) : <li>Take a shower</li>}
+    {/* {loading ? <Loading /> : friendRequests.length > 0 ? friendRequests.map(request => <FrRequest request={request} rejectRequest={rejectRequest} acceptRequest={acceptRequest}/>) : <li>Take a shower</li>} */}
+    {loading ? <Loading /> : friendRequests.length > 0 ? <Grid container justifyContent='center' spacing={2}>{friendRequests.map(request => <Grid item xs={6} sm={3} key={request.id}><FrRequest request={request} rejectRequest={rejectRequest} acceptRequest={acceptRequest}/></Grid>)}</Grid> : <LinkContainer to='/user_list'><Button>Get Out There !</Button></LinkContainer>}
     </>
     )
 }

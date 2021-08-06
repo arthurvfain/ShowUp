@@ -22,7 +22,7 @@ function NavBar({currentUser, setCurrentUser}) {
 
         <Navbar bg="primary" variant="dark">
         <Container>
-            <Navbar.Brand>ShowUp{currentUser ? `, ${currentUser.username}`: null}</Navbar.Brand>     
+            <Navbar.Brand style={{ fontWeight:'bold' }}>ShowUp{currentUser ? `, ${currentUser.username}`: null}</Navbar.Brand>     
         {currentUser ?  
             <Nav className="me-auto">
                 <LinkContainer to='/home'><Nav.Link>Home</Nav.Link></LinkContainer>

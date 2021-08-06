@@ -3,7 +3,7 @@ import { Card, Button } from 'react-bootstrap'
 function Invitation({acceptInvite, invitation, rejectInvite})
 {
     return (
-        <Card className = 'text-center' style={{ width: '18rem'  }}>
+        <Card className = 'text-center'>
             <Card.Header as="h5">{invitation.event.name}</Card.Header>
             <Card.Body>
                 <Card.Title>{`${invitation.inviter.username} invited you !`}</Card.Title>

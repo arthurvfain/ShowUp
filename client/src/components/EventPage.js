@@ -2,6 +2,8 @@ import {useState, useEffect} from 'react'
 import {useParams} from 'react-router-dom'
 import Loading from './Loading'
 import FriendCard from './FriendCard'
+import { Grid } from '@material-ui/core'
+import { Button } from 'react-bootstrap'
 
 function EventPage({currentUser}){
     
@@ -91,15 +93,15 @@ function EventPage({currentUser}){
 
     function eventPageDetails(event){
         return (
-            <>
+            <div className='pageContent'>
                 <h1>{event.name}</h1>
-                {currentUser ? attending ? <><h2>You are attending this event</h2><button onClick={() => flakeOut()}>Dont Wanna Go</button></> : <button onClick={() => attend()}>Attend Event!</button> : null }
+                {currentUser ? attending ? <><h2>You are attending this event</h2><Button variant="primary" onClick={() => flakeOut()}>Dont Wanna Go</Button></> : <Button variant="primary" onClick={() => attend()}>Attend Event!</Button> : null }
                 <h2>{event.location}</h2>
                 <h2>{event.time}</h2>
                 <h2>Attendees:</h2>
-                <ul>
-                    {attendees.map(user => <FriendCard friend={user}/>)}
-                </ul>
+                <Grid container justifyContent='center' spacing={2}>
+                    {attendees.map(user => <Grid item xs={6} sm={3} key={user.id}><FriendCard friend={user}/></Grid>)}
+                </Grid>
                 {currentUser && attending ?
                     <form onSubmit={(e) => inviteGuest(e)}>
                         <label>Invite Friend:</label>
@@ -110,7 +112,7 @@ function EventPage({currentUser}){
                         <input type='submit'/>
                     </form> : null}
                 {error ? <li>{error}</li> : null}
-            </>
+            </div>
         )
     }
 

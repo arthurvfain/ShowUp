@@ -1,6 +1,9 @@
 import Loading from './Loading'
 import Invitation from './Invitation'
 import {useState, useEffect} from 'react'
+import { Grid }  from '@material-ui/core/'
+import { Button } from 'react-bootstrap'
+import { LinkContainer } from 'react-router-bootstrap'
 
 function EventInvitations({currentUser, setEvents, events}) {
     
@@ -46,7 +49,8 @@ function EventInvitations({currentUser, setEvents, events}) {
     return (
     <>
     <h1>You're Invited !</h1>
-    {loading ? <Loading /> : invitations.length > 0 ? invitations.map(invitation => <Invitation invitation={invitation} acceptInvite={acceptInvite} rejectInvite={rejectInvite}/>) : <li>Start Your Own</li>}
+    {/* {loading ? <Loading /> : invitations.length > 0 ? invitations.map(invitation => <Invitation invitation={invitation} acceptInvite={acceptInvite} rejectInvite={rejectInvite}/>) : <li>Start Your Own</li>} */}
+    {loading ? <Loading /> : invitations.length > 0 ? <Grid container justifyContent='center' spacing={2}>{invitations.map(invitation => <Grid item xs={6} sm={3} key={invitation.id}><Invitation invitation={invitation} acceptInvite={acceptInvite} rejectInvite={rejectInvite}/></Grid>)}</Grid> : <LinkContainer to='/public_events'><Button>Get Out There !</Button></LinkContainer>}
     </>
     )
 }

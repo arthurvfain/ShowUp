@@ -1,7 +1,7 @@
 import Loading from './Loading'
 import FriendCard from './FriendCard'
 import {useState, useEffect} from 'react'
-import { Container } from 'react-bootstrap'
+import Grid from '@material-ui/core/Grid';
 
 function FriendsList({currentUser}) {
     
@@ -17,16 +17,12 @@ function FriendsList({currentUser}) {
     }, [])
 
     return (
-    <>
+    <div className = 'pageContent'>
     <h1>Friends</h1>
-    {loading ? <Loading /> : friends.length > 0 ? <Container>{friends.map(friend => <FriendCard friend={friend}/>)}</Container> : <li>Go Outside</li>}
-    </>
+    {loading ? <Loading /> : friends.length > 0 ? <Grid container justifyContent='center' spacing={2}>{friends.map(friend => <Grid item xs={6} sm={3} key={friend.id}><FriendCard friend={friend}/></Grid>)}</Grid> : <li>Go Outside</li>}
+    </div>
     )
 }
 
-
-<Container>
-    
-</Container>
 
 export default FriendsList 

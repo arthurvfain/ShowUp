@@ -1,11 +1,15 @@
+import {Card, Button} from 'react-bootstrap'
 function FrRequest({request, rejectRequest, acceptRequest})
 {
     return (
-        <li>
-            <p>{`${request.requester.username} wants to be your friend !`}</p>
-            <button onClick={() => acceptRequest(request.id, request.requestee_id, request.requester_id)}>Accept</button>
-            <button onClick={() => rejectRequest(request.id)}>REJECTED</button>
-        </li>
+        <Card className = 'text-center'>
+            <Card.Header as="h5">{request.requester.username} wants to be your friend !</Card.Header>
+            <Card.Body>
+                <Card.Text>Would you like to: </Card.Text>
+                <Button variant="outline-primary" onClick={() => acceptRequest(request.id, request.requestee_id, request.requester_id)}>Accept</Button>
+                <Button variant="outline-danger" onClick={() => rejectRequest(request.id)}>REJECT</Button>
+            </Card.Body>
+        </Card>
     )
 }
 export default FrRequest;

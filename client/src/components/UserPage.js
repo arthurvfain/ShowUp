@@ -3,6 +3,8 @@ import {useParams} from 'react-router-dom'
 import EventCard from './EventCard'
 import FriendCard from './FriendCard'
 import Loading from './Loading'
+import { Grid } from '@material-ui/core'
+import { Button } from 'react-bootstrap'
 function UserPage({currentUser}){
     
     const params = useParams();
@@ -87,23 +89,23 @@ function UserPage({currentUser}){
         return (
             <div>
                 <h1>{user.username}'s Page</h1>
-                {!friend ? requested ? <button onClick={() => cancelRequest()}>Cancel Friend Request</button> : inverseRequested ? <button onClick={() => acceptRequest()}>Accept Friend Request</button>: <button onClick={() => addFriend()}>Add Friend</button> : <button onClick={() => unfriend()}>Unfriend</button>}
+                {!friend ? requested ? <Button variant="primary" onClick={() => cancelRequest()}>Cancel Friend Request</Button> : inverseRequested ? <Button variant="primary" onClick={() => acceptRequest()}>Accept Friend Request</Button>: <Button variant="primary" onClick={() => addFriend()}>Add Friend</Button> : <Button variant="primary" onClick={() => unfriend()}>Unfriend</Button>}
                 <h1>User Events</h1>
-                <ul>
-                    {publicEvents.map(event => <EventCard event={event}/>)}
-                </ul>
+                <Grid container justifyContent='center' spacing={2}>
+                    {publicEvents.map(event => <Grid item xs={6} sm={3} key={event.id}><EventCard event={event}/></Grid>)}
+                </Grid>
                 <h1>User Friends</h1>
-                <ul>
-                    {friendList.map(friend => <FriendCard friend={friend}/>)}
-                </ul>
+                <Grid container justifyContent='center' spacing={2}>
+                    {friendList.map(friend => <Grid item xs={6} sm={3} key={friend.id}><FriendCard friend={friend}/></Grid>)}
+                </Grid>
             </div>
         )
     }
 
     return (
-        <>
+        <div className='pageContent'>
             {loading ? <Loading /> : generateUserPage(user)}
-        </>
+        </div>
     )
 }
 export default UserPage;

@@ -1,6 +1,7 @@
 import {useEffect, useState} from 'react'
 import Loading from './Loading'
 import FriendCard from './FriendCard'
+import { Grid } from '@material-ui/core'
 
 function BrowseUsers({currentUser}){
 
@@ -17,10 +18,10 @@ function BrowseUsers({currentUser}){
     const filteredUsers = userList.filter(user => user.id !== currentUser.id)
 
     return (
-        <>
-            <h1>Users like You</h1>
-            {loading ? <Loading /> : filteredUsers.map(user => <FriendCard key={user.id} friend={user}>{user.username}</FriendCard>)}
-        </>
+        <div className='pageContent'>
+            <h1>People Who ShowUp</h1>
+            {loading ? <Loading /> : <Grid container justifyContent='center' spacing={2}>{filteredUsers.map(user => <Grid item xs={6} sm={3} key={user.id}><FriendCard friend={user}/></Grid>)}</Grid>}
+        </div>
     )
 }
 export default BrowseUsers
