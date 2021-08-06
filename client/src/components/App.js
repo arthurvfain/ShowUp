@@ -13,6 +13,8 @@ import FriendsList from './FriendsList'
 import UserDashboard from './UserDashboard'
 import CreateEvent from './CreateEvent'
 import {useState, useEffect} from 'react'
+import HomeLogo from './HomeLogo'
+import Footer from './Footer'
 
 function App() {
   
@@ -31,6 +33,9 @@ function App() {
     <>
     <NavBar setCurrentUser={setCurrentUser} currentUser={currentUser}/>
     <Switch>
+      <Route exact path='/'>
+        <HomeLogo />
+      </Route>
       <Route exact path='/signup'>
         <SignUp setCurrentUser={setCurrentUser}/>
       </Route>
@@ -60,6 +65,7 @@ function App() {
         <CreateEvent currentUser={currentUser}/>
       </Route>
     </Switch>
+    <Footer />
     </>
   )
 }

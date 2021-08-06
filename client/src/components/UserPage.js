@@ -22,15 +22,13 @@ function UserPage({currentUser}){
             setUser(data)
             setLoading(false)
             setFriendList(data.friends)
-            console.log(data)
-            console.log(currentUser)
             if (data.friends.some(friend => friend.id === currentUser.id)) {
                 setFriend(true)
             }
             if (data.friend_requests.some(request => request.requester_id === currentUser.id)) {
                 setRequested(true)
             }
-            if (currentUser.friend_requests.some(request => request.requester_id === data.id)) {
+            if (currentUser && currentUser.friend_requests.some(request => request.requester_id === data.id)) {
                 setFriendRequestId(currentUser.friend_requests.find(request => request.requester_id === data.id).id)
                 setInverseRequested(true)
             }
@@ -70,7 +68,10 @@ function UserPage({currentUser}){
             },
             body: JSON.stringify({friend_request_id: friendRequestId, user_id: user.id, friend_id: currentUser.id})
         })
-        .then(() => setFriend(true))
+        .then(() => {
+            setFriend(true)
+            setInverseRequested(false)
+        })
     }
 
     function unfriend() {
@@ -78,6 +79,7 @@ function UserPage({currentUser}){
         .then(() => {
             setFriend(false)
             setRequested(false)
+            setInverseRequested(false)
             let newFriends = friendList.filter(friend => friend.id !== currentUser.id)
             setFriendList(newFriends)
         })
@@ -89,12 +91,12 @@ function UserPage({currentUser}){
         return (
             <div>
                 <h1>{user.username}'s Page</h1>
-                {!friend ? requested ? <Button variant="primary" onClick={() => cancelRequest()}>Cancel Friend Request</Button> : inverseRequested ? <Button variant="primary" onClick={() => acceptRequest()}>Accept Friend Request</Button>: <Button variant="primary" onClick={() => addFriend()}>Add Friend</Button> : <Button variant="primary" onClick={() => unfriend()}>Unfriend</Button>}
-                <h1>User Events</h1>
+                {currentUser ? !friend ? requested ? <Button variant="primary" onClick={() => cancelRequest()}>Cancel Friend Request</Button> : inverseRequested ? <Button variant="primary" onClick={() => acceptRequest()}>Accept Friend Request</Button>: <Button variant="primary" onClick={() => addFriend()}>Add Friend</Button> : <Button variant="primary" onClick={() => unfriend()}>Unfriend</Button>:null}
+                <h3>User Events</h3>
                 <Grid container justifyContent='center' spacing={2}>
                     {publicEvents.map(event => <Grid item xs={6} sm={3} key={event.id}><EventCard event={event}/></Grid>)}
                 </Grid>
-                <h1>User Friends</h1>
+                <h3>User Friends</h3>
                 <Grid container justifyContent='center' spacing={2}>
                     {friendList.map(friend => <Grid item xs={6} sm={3} key={friend.id}><FriendCard friend={friend}/></Grid>)}
                 </Grid>

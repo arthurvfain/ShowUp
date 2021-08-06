@@ -93,12 +93,12 @@ function EventPage({currentUser}){
 
     function eventPageDetails(event){
         return (
-            <div className='pageContent'>
+            <div>
                 <h1>{event.name}</h1>
-                {currentUser ? attending ? <><h2>You are attending this event</h2><Button variant="primary" onClick={() => flakeOut()}>Dont Wanna Go</Button></> : <Button variant="primary" onClick={() => attend()}>Attend Event!</Button> : null }
-                <h2>{event.location}</h2>
-                <h2>{event.time}</h2>
-                <h2>Attendees:</h2>
+                {currentUser ? attending ? <><h2>You are attending this event</h2><Button variant="primary" onClick={() => flakeOut()}>Flake Out</Button></> : <Button variant="primary" onClick={() => attend()}>Attend Event!</Button> : null }
+                <h3>{event.location}</h3>
+                <h3>{event.time}</h3>
+                <h3>Attendees:</h3>
                 <Grid container justifyContent='center' spacing={2}>
                     {attendees.map(user => <Grid item xs={6} sm={3} key={user.id}><FriendCard friend={user}/></Grid>)}
                 </Grid>
@@ -117,7 +117,7 @@ function EventPage({currentUser}){
     }
 
     return (
-        <div>
+        <div className='pageContent'>
             {loading ? <Loading/> : eventPageDetails(event)}
         </div>
     )
