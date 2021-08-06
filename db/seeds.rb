@@ -86,7 +86,7 @@ puts "Seeded Friendships!"
 
 Event.create(name: "Lumpy's Lump Party", location: "The Lumps Bar and Grille", public: false, time: Time.now.to_datetime)
 Event.create(name: "Gregs's Greg Party", location: "The Gregs Bar and Grille", public: true, time: Time.now.to_datetime)
-Event.create(name: "Flatiron Graduation Party", location: "Manhattan Campus", public: true, time: Time.now.to_datetime)
+Event.create(name: "Flatiron Graduation", location: "Manhattan Campus", public: true, time: Time.now.to_datetime)
 Event.create(name: "Code Challenge", location: "Virtual", public: true, time: Time.now.to_datetime)
 Event.create(name: "Greg's Reviews", location: "Zoom Room Kaboom", public: true, time: Time.now.to_datetime)
 Event.create(name: "Friday Feelz", location: "Our Safe Space", public: true, time: Time.now.to_datetime)
