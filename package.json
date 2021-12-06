@@ -6,7 +6,7 @@
   },
   "scripts": {
     "start": "react-scripts --openssl-legacy-provider start",
-    "build": "react-scripts --openssl-legacy-provider build --prefix client",
+    "build": "react-scripts --openssl-legacy-provider build",
     "clean": "rm -rf public",
     "deploy": "cp -a client/build/. public/"
   }
