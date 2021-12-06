@@ -8,7 +8,7 @@
     "start": "react-scripts --openssl-legacy-provider start",
     "build": "react-scripts --openssl-legacy-provider build --prefix client",
     "clean": "rm -rf public",
-    "deploy": "cp -a client/build/. public/",
-    "heroku-postbuild": "npm run clean && npm run build && npm run deploy"
+    "deploy": "cp -a client/build/. public/"
+    // "heroku-postbuild": "npm run clean && npm run build && npm run deploy"
   }
 }
